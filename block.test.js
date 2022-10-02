@@ -8,7 +8,7 @@ describe("Block", () => {
   const hash = "bar-hash";
   const data = ["blockchain", "data"];
   const difficulty = 1;
-  const nonce = 1;
+  const nonce = 0;
 
   const block = new Block({
     timestamp,
@@ -73,9 +73,11 @@ describe("Block", () => {
       );
     });
 
+    console.log(minedBlock);
+
     it("sets a `hash` that makes the difficulty criteria", () => {
       expect(minedBlock.hash.substring(0, minedBlock.difficulty)).toEqual(
-        "0".repeat(difficulty)
+        "0".repeat(minedBlock.difficulty)
       );
     });
   });

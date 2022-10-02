@@ -23,7 +23,7 @@ class Blockchain {
     }
 
     for (let i = 1; i < chain.length; i++) {
-      const { timestamp, hash, lastHash, data } = chain[i];
+      const { timestamp, hash, lastHash, data, difficulty, nonce } = chain[i];
       const lastBlockhash = chain[i - 1].hash;
 
       // Check lastHash
@@ -32,7 +32,7 @@ class Blockchain {
       }
 
       // Check data
-      if (hash !== cryptoHash(timestamp, lastHash, data)) {
+      if (hash !== cryptoHash(timestamp, lastHash, data, difficulty, nonce)) {
         return false;
       }
     }
